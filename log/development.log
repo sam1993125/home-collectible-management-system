@@ -1143,3 +1143,359 @@ FOREIGN KEY ("user_id")
   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
   [1m[36mItemStatus Create (0.2ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 37], ["user_id", 35], ["selling_or_donating", "Communications"], ["price_for_selling", 112.0], ["is_shipped", true], ["has_invoice", true], ["created_at", "2022-07-10 19:02:34.320840"], ["updated_at", "2022-07-10 19:02:34.320840"]]
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (3.0ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 31]]
+  [1m[36mUser Destroy (1.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 31]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 32]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 33]]
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 32]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 33]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 43]]
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 33]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 34]]
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 34]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 35]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 36]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 45]]
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 35]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 36]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 44]]
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 36]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 37]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 37]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 38]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 39]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 42]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 38]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 39]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 35]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 38]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 39]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 40]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 31]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 34]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 40]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 41]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 41]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 42]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 40]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 41]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 42]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 43]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 37]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 43]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 44]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 44]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."user_id" = $1[0m  [["user_id", 45]]
+  [1m[36mItemStatus Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_statuses" WHERE "item_statuses"."id" = $1[0m  [["id", 32]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 45]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses"[0m
+  [1m[36mItemDetail Load (2.4ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 31]]
+  [1m[36mItemDetail Destroy (0.5ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 31]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 32]]
+  [1m[36mItemDetail Destroy (0.3ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 32]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 33]]
+  [1m[36mItemDetail Destroy (0.3ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 33]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 34]]
+  [1m[36mItemDetail Destroy (0.3ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 34]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 35]]
+  [1m[36mItemDetail Destroy (0.3ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 35]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.2ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 36]]
+  [1m[36mItemDetail Destroy (0.3ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 36]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 37]]
+  [1m[36mItemDetail Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 37]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 38]]
+  [1m[36mItemDetail Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 38]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 39]]
+  [1m[36mItemDetail Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 39]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 40]]
+  [1m[36mItemDetail Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 40]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 41]]
+  [1m[36mItemDetail Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 41]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 42]]
+  [1m[36mItemDetail Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 42]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 43]]
+  [1m[36mItemDetail Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 43]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 44]]
+  [1m[36mItemDetail Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 44]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemStatus Load (0.1ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" WHERE "item_statuses"."item_detail_id" = $1[0m  [["item_detail_id", 45]]
+  [1m[36mItemDetail Destroy (0.2ms)[0m  [1m[31mDELETE FROM "item_details" WHERE "item_details"."id" = $1[0m  [["id", 45]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (6.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Dee Kay"], ["user_type", "Retail Specialist"], ["created_at", "2022-07-11 01:04:52.207040"], ["updated_at", "2022-07-11 01:04:52.207040"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Kareem O'Weet"], ["user_type", "National Administration Manager"], ["created_at", "2022-07-11 01:04:52.214744"], ["updated_at", "2022-07-11 01:04:52.214744"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Russell Ingleaves"], ["user_type", "Sales Planner"], ["created_at", "2022-07-11 01:04:52.216144"], ["updated_at", "2022-07-11 01:04:52.216144"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Shirley U. Jest"], ["user_type", "Advertising Agent"], ["created_at", "2022-07-11 01:04:52.217486"], ["updated_at", "2022-07-11 01:04:52.217486"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Crystal Claire Waters"], ["user_type", "Hospitality Technician"], ["created_at", "2022-07-11 01:04:52.218789"], ["updated_at", "2022-07-11 01:04:52.218789"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Lynn Guini"], ["user_type", "Manufacturing Orchestrator"], ["created_at", "2022-07-11 01:04:52.220134"], ["updated_at", "2022-07-11 01:04:52.220134"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Cole Kutz"], ["user_type", "Real-Estate Specialist"], ["created_at", "2022-07-11 01:04:52.221507"], ["updated_at", "2022-07-11 01:04:52.221507"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Al Dente"], ["user_type", "Construction Administrator"], ["created_at", "2022-07-11 01:04:52.222887"], ["updated_at", "2022-07-11 01:04:52.222887"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Ed Ible"], ["user_type", "National Analyst"], ["created_at", "2022-07-11 01:04:52.224239"], ["updated_at", "2022-07-11 01:04:52.224239"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Sue Ridge"], ["user_type", "Product Community-Services Supervisor"], ["created_at", "2022-07-11 01:04:52.225629"], ["updated_at", "2022-07-11 01:04:52.225629"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Kay Mart"], ["user_type", "Government Technician"], ["created_at", "2022-07-11 01:04:52.227025"], ["updated_at", "2022-07-11 01:04:52.227025"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Jasmine Rice"], ["user_type", "Legal Associate"], ["created_at", "2022-07-11 01:04:52.228403"], ["updated_at", "2022-07-11 01:04:52.228403"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Raynor Schein"], ["user_type", "Internal IT Liaison"], ["created_at", "2022-07-11 01:04:52.229860"], ["updated_at", "2022-07-11 01:04:52.229860"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Owen Moore"], ["user_type", "Central Farming Specialist"], ["created_at", "2022-07-11 01:04:52.231345"], ["updated_at", "2022-07-11 01:04:52.231345"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Anne Teak"], ["user_type", "IT Facilitator"], ["created_at", "2022-07-11 01:04:52.232771"], ["updated_at", "2022-07-11 01:04:52.232771"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (6.4ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/adcommodiest.png?size=300x300&set=set1"], ["object_name", "Sabado em Copacabana"], ["object_year", 1900], ["object_type", "Teaching"], ["object_description", "## Vel\nAdipisci eum a. Ea veniam quisquam. Necessitatibus dolor exercitationem.\nsaepe | est | sed\n---- | ---- | ----\neum | soluta | fugit\nfacere | sit | nulla\nNihil aut ut. Alias commodi enim. Quia officia consequatur.\n* Voluptatem. \n* Deserunt. \n* Non. \n* Repellat. \n* Libero. \n* Molestiae. \n* In. \n* Laborum. \n* Sit. \n\nLabore vel aliquid. Est blanditiis odio. A autem vero.\n```ruby\nVoluptatem.\n```\nPerferendis iusto est. Nesciunt eaque quos. Blanditiis omnis sit.\n### Perspiciatis\nAdipisci quas quos. Vitae iusto quo. Rerum repellat cum.\n##### Omnis"], ["condition", "good"], ["location", "Homershire"], ["bought_at", "Windler-Bernhard"], ["created_at", "2022-07-11 01:04:52.236702"], ["updated_at", "2022-07-11 01:04:52.236702"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.3ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/doloribusdolorsaepe.png?size=300x300&set=set1"], ["object_name", "Aquarela"], ["object_year", 1900], ["object_type", "Psychology"], ["object_description", "## Placeat\nSint earum dignissimos. Quis labore ab. Quidem placeat sit.\n* Aliquam. \n* Aut. \n* Inventore. \n* Earum. \n* Quos. \n* Enim. \n* Voluptatem. \n* Hic. \n\nEt repellendus provident. Saepe vel optio. Consequatur dolores sequi.\nvoluptas | cumque | et\n---- | ---- | ----\naliquid | odit | possimus\nvero | consequatur | voluptatibus\nDistinctio atque velit. Autem quam sunt. Quisquam et voluptatem.\n* Dolorum. \n\nRatione quasi sint. Eius quae inventore. Beatae autem eaque.\n0. Occaecati. \n1. Est. \n2. Nesciunt. \n3. Aut. \n4. Enim. \n5. Aut. \n6. Est. \n7. Quia. \n8. Consectetur. \n"], ["condition", "good"], ["location", "East Hungfurt"], ["bought_at", "Swift and Sons"], ["created_at", "2022-07-11 01:04:52.247452"], ["updated_at", "2022-07-11 01:04:52.247452"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.9ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/quibusdameumautem.png?size=300x300&set=set1"], ["object_name", "Diz Que Fui Por Ai"], ["object_year", 1900], ["object_type", "Applied Science (Psychology)"], ["object_description", "##### Ad\nFacere ullam tempore. Sint occaecati aut. Inventore autem accusantium. Sequi ut quam. Magni voluptas et.\nsed | adipisci | sunt\n---- | ---- | ----\nvoluptates | accusamus | at\nfuga | nisi | deleniti\nPariatur dolore dolores. Ab voluptate fuga. Et velit explicabo. Voluptas qui aut. Sit nemo alias.\n`Ullam.`\nNihil qui dolore. Dolore et et. Odit explicabo dolore. Ut non nulla. Ipsa quod perspiciatis.\n```ruby\nEos.\n```"], ["condition", "good"], ["location", "Stefanmouth"], ["bought_at", "Buckridge-Boyer"], ["created_at", "2022-07-11 01:04:52.251101"], ["updated_at", "2022-07-11 01:04:52.251101"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.2ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/quosquirerum.png?size=300x300&set=set1"], ["object_name", "Eu Sei Que Vou Te Amar"], ["object_year", 1900], ["object_type", "Applied Science (Psychology)"], ["object_description", "### Perferendis\nMolestias et aut. Ea officiis sit. Qui architecto eum. Repudiandae esse enim.\n* Enim. \n* Reiciendis. \n* Iure. \n* Repellat. \n* Et. \n* Similique. \n* Itaque. \n\nVero ex non. Architecto perferendis ut. Autem accusantium atque. Natus saepe soluta.\n* Occaecati. \n* Aliquid. \n* Nam. \n* Est. \n* Odio. \n* Cumque. \n* Aliquam. \n* Quam. \n"], ["condition", "good"], ["location", "Bernardfurt"], ["bought_at", "Prohaska-Bernier"], ["created_at", "2022-07-11 01:04:52.255038"], ["updated_at", "2022-07-11 01:04:52.255038"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.3ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/porrocorruptiut.png?size=300x300&set=set1"], ["object_name", "Entardecendo"], ["object_year", 1900], ["object_type", "Computer Science"], ["object_description", "#### Asperiores\nOmnis velit ut. Dolor placeat aliquid. Id pariatur distinctio.\n#### Quidem\nRepudiandae sint adipisci. Sint blanditiis quo. Inventore velit rem.\n`Sed.`\nVoluptate ea consequatur. Quidem asperiores illo. Ut ad sapiente.\nreiciendis | earum | laudantium\n---- | ---- | ----\ndolor | quaerat | nemo\nprovident | enim | explicabo\nVoluptas molestiae et. Rerum error et. Magnam quisquam pariatur.\nvoluptate | voluptatem | sed\n---- | ---- | ----\nqui | est | assumenda\ncum | cupiditate | et\nIncidunt et molestiae. Nemo dolorem rem. Harum provident consectetur.\n```ruby\nEa.\n```"], ["condition", "good"], ["location", "North Yuri"], ["bought_at", "Pacocha LLC"], ["created_at", "2022-07-11 01:04:52.258655"], ["updated_at", "2022-07-11 01:04:52.258655"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.2ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/quisquaemagnam.png?size=300x300&set=set1"], ["object_name", "Valsa de Uma Cidade"], ["object_year", 1900], ["object_type", "Law"], ["object_description", "### Laboriosam\nSequi labore sed. Quasi aspernatur quos. Sint inventore ab. Repellat et ullam.\nreprehenderit | necessitatibus | non\n---- | ---- | ----\nvoluptas | et | dignissimos\nsuscipit | magni | dolor\nSapiente nostrum sunt. Vitae explicabo quo. Nobis quam eos. In alias non.\nBeatae fugit perferendis. Vel est ullam. Eum ~et~ pariatur.\nDolorem enim voluptatibus. Magni deleniti aut. Earum nihil quia. Impedit quaerat quo.\n`Perspiciatis.`\nUt asperiores aut. Distinctio ut sed. Error deserunt excepturi. Ut eveniet est.\neligendi | soluta | eos\n---- | ---- | ----\nquas | amet | sed\nprovident | possimus | voluptates"], ["condition", "good"], ["location", "West Eldon"], ["bought_at", "Zemlak, Schulist and Wunsch"], ["created_at", "2022-07-11 01:04:52.262468"], ["updated_at", "2022-07-11 01:04:52.262468"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.3ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/etporrosed.png?size=300x300&set=set1"], ["object_name", "Agua de beber"], ["object_year", 1900], ["object_type", "Teaching"], ["object_description", "## Laudantium\nAd soluta eligendi. Beatae mollitia voluptates. Perferendis quisquam quibusdam. Qui et eaque. Sunt labore ut. Ut vitae ea.\nQui *ipsam* voluptatem. Perferendis eum consequatur. Tempore adipisci occaecati.\nAut architecto possimus. Rerum quos odit. Consequuntur facere sed. Ea laudantium mollitia. Rerum optio doloremque. Maxime et aut.\n#### Voluptatem\nFuga voluptatem libero. Distinctio quasi rerum. Iste labore impedit.\n##### Labore\nSit sit veniam. Sit et aut. Rerum voluptas dolor.\n0. Saepe. \n1. Necessitatibus. \n2. Ex. \n3. Amet. \n4. Quod. \n\nNon adipisci ab. Quibusdam excepturi perspiciatis. Dignissimos quo temporibus. Sunt debitis enim. Quibusdam laboriosam quis. Repellendus modi excepturi.\n## Ea\nA minus iusto. Voluptas quisquam perferendis. Voluptatem et qui. Dolor blanditiis molestiae. Sint rerum ut. In sed dignissimos.\n0. Doloribus. \n1. Quisquam. \n2. Sapiente. \n3. Ratione. \n\nId aut asperiores. Dolorum necessitatibus est. Est qui dignissimos. Vitae dolores sit. Et sed modi. Fugiat libero aliquid.\n* Eum. \n* Sit. \n"], ["condition", "good"], ["location", "Williamsburgh"], ["bought_at", "Kub, Conn and Crona"], ["created_at", "2022-07-11 01:04:52.267823"], ["updated_at", "2022-07-11 01:04:52.267823"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.3ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/velitminimatempore.png?size=300x300&set=set1"], ["object_name", "Chega de Saudade"], ["object_year", 1900], ["object_type", "Education"], ["object_description", "#### Corporis\nQui quo voluptatum. Aut ad quis. Vel quis earum.\nmodi | dolorem | quo\n---- | ---- | ----\nlabore | dolore | omnis\nsed | fugit | quia\nNatus dignissimos architecto. Delectus explicabo odio. Inventore cum magnam.\n```ruby\nVelit.\n```"], ["condition", "good"], ["location", "New Livia"], ["bought_at", "Gutmann-Howell"], ["created_at", "2022-07-11 01:04:52.270573"], ["updated_at", "2022-07-11 01:04:52.270573"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.2ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/nesciuntsaepeanimi.png?size=300x300&set=set1"], ["object_name", "Clube do Samba"], ["object_year", 1900], ["object_type", "Information Systems"], ["object_description", "#### Eum\nNeque itaque veritatis. Nesciunt magni sed. Eos mollitia quasi. Hic saepe fuga. Perferendis in quae. Facilis nesciunt molestias.\n* Molestiae. \n* Quis. \n* Harum. \n* Ducimus. \n\nDeserunt suscipit repellat. Dicta in laborum. Impedit nulla id. Ex doloribus harum. Et ipsam eum. In qui suscipit.\n* Perferendis. \n* Exercitationem. \n* Officia. \n* Ipsa. \n* Asperiores. \n* Dignissimos. \n* Perspiciatis. \n* Adipisci. \n\nUnde ut aliquam. Quisquam aut non. Accusantium ea illum. Molestiae enim velit. Cumque hic est. Iste qui et.\nrerum | mollitia | fugit\n---- | ---- | ----\nvoluptatem | sequi | debitis\nmolestiae | aspernatur | aut\nEnim ea ut. Aut inventore sed. Illo nobis quo. Rerum corrupti maiores. Nesciunt assumenda vel. Aliquam consectetur et.\nTenetur saepe _eos._ Consequatur autem sequi. Commodi quaerat eos.\nEum dolor minus. Fugiat maiores est. Quae facilis recusandae. Repudiandae velit nihil. Eligendi veniam reprehenderit. Consequatur qui quam.\n```ruby\nNesciunt.\n```"], ["condition", "good"], ["location", "East Joaquinville"], ["bought_at", "Haag Group"], ["created_at", "2022-07-11 01:04:52.275612"], ["updated_at", "2022-07-11 01:04:52.275612"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.2ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/undeanimivoluptatem.png?size=300x300&set=set1"], ["object_name", "Agua de beber"], ["object_year", 1900], ["object_type", "Creative Arts"], ["object_description", "# A\nOccaecati ea magni. Deleniti inventore ipsa. Nostrum doloribus a. Qui dolorem harum. Id et consequuntur. Nulla quas maxime.\nNon eum **et.** Tenetur ut ducimus. Fugiat molestiae iste.\nVoluptatem amet dolores. Consequatur minus sed. Dolor in non. Est ut sed. Rerum at facere. Consequatur sint reiciendis.\n`Illum.`\nIure adipisci quia. Error est et. Ut possimus esse. Deserunt doloribus dolore. Cum sit fugit. Ut ea unde.\n0. Necessitatibus. \n1. Sapiente. \n2. Rerum. \n3. Unde. \n4. Aut. \n5. Et. \n"], ["condition", "good"], ["location", "East Murray"], ["bought_at", "Gutkowski-Murphy"], ["created_at", "2022-07-11 01:04:52.279512"], ["updated_at", "2022-07-11 01:04:52.279512"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.2ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/velautdolor.png?size=300x300&set=set1"], ["object_name", "Corcovado"], ["object_year", 1900], ["object_type", "Creative Arts"], ["object_description", "##### Qui\nNihil dolorum ut. Nihil fugiat eum. Molestiae ut quibusdam. Ipsa eveniet rerum.\n0. Omnis. \n1. Voluptas. \n2. Et. \n3. Et. \n4. Distinctio. \n5. Eveniet. \n\nSit est aut. Distinctio mollitia illo. Voluptas omnis iure. Incidunt aut rerum.\n* Atque. \n* Quidem. \n* Vero. \n* Hic. \n* Rerum. \n* Perferendis. \n\nEt qui facilis. Quaerat qui sit. Incidunt perspiciatis praesentium. Nihil aut cumque.\nmodi | odio | voluptatum\n---- | ---- | ----\nut | officiis | non\nharum | veritatis | illum\nVoluptatum perspiciatis totam. Accusamus voluptate optio. Animi quia et. Eum consequatur praesentium.\n0. Voluptas. \n1. Ratione. \n2. Facilis. \n3. Nostrum. \n4. Molestiae. \n"], ["condition", "good"], ["location", "Myrnaside"], ["bought_at", "Spinka-Rempel"], ["created_at", "2022-07-11 01:04:52.283800"], ["updated_at", "2022-07-11 01:04:52.283800"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.2ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/aliasinciduntet.png?size=300x300&set=set1"], ["object_name", "Alo, alo Marciano"], ["object_year", 1900], ["object_type", "Psychology"], ["object_description", "# Repellendus\nEst libero iusto. Minus labore totam. Adipisci est a. Nam sint asperiores. At accusantium quam. Et non ut.\n###### Repudiandae\nAperiam praesentium placeat. Voluptatum quia itaque. Velit sit fuga. Magnam voluptatibus consequatur. Laboriosam deserunt et. Dolores expedita enim.\n* Quaerat. \n* Atque. \n"], ["condition", "good"], ["location", "Waltermouth"], ["bought_at", "Schmitt-McCullough"], ["created_at", "2022-07-11 01:04:52.289255"], ["updated_at", "2022-07-11 01:04:52.289255"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.3ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/eosullamipsum.png?size=300x300&set=set1"], ["object_name", "Dindi"], ["object_year", 1900], ["object_type", "Biological Science"], ["object_description", "###### Non\nCulpa qui molestiae. Qui cumque libero. Aut vero voluptates. Est animi rerum. Nulla consequatur quia.\nId **dolor** accusamus. Iusto saepe nihil. Error velit rem.\nRem ea rerum. Itaque accusantium nostrum. Hic minima sed. Soluta similique quaerat. Id numquam quis.\n## Dolor\nAccusamus et repudiandae. Vero facere iusto. Est accusamus vitae.\n* Sint. \n* Quod. \n* At. \n* Saepe. \n* Consequatur. \n* Totam. \n* Sunt. \n* Delectus. \n\nQui adipisci voluptatem. Est perspiciatis quaerat. Nostrum aut et. Quam dolores reiciendis. Laudantium consequuntur necessitatibus.\n###### Exercitationem\nDeserunt aut nihil. Et quo atque. Mollitia voluptatem et.\n`Velit.`"], ["condition", "good"], ["location", "Robtborough"], ["bought_at", "Quitzon LLC"], ["created_at", "2022-07-11 01:04:52.293477"], ["updated_at", "2022-07-11 01:04:52.293477"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.2ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/estutexpedita.png?size=300x300&set=set1"], ["object_name", "Corcovado"], ["object_year", 1900], ["object_type", "Psychology"], ["object_description", "# Optio\nSint rem corrupti. Incidunt quasi doloremque. Et voluptas ea. Minima quae est.\n**Nobis** dolorum consequatur. Explicabo repudiandae nemo. Commodi omnis aut.\nConsequatur saepe porro. Blanditiis sunt ut. Sequi saepe non. Exercitationem dolor officia.\n* Cumque. \n* Quasi. \n* Veniam. \n* Laborum. \n* Natus. \n* Porro. \n* Nesciunt. \n* Recusandae. \n* Blanditiis. \n* Quibusdam. \n"], ["condition", "good"], ["location", "East Jorgebury"], ["bought_at", "Mitchell-Thiel"], ["created_at", "2022-07-11 01:04:52.296797"], ["updated_at", "2022-07-11 01:04:52.296797"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Create (0.2ms)[0m  [1m[32mINSERT INTO "item_details" ("image_url", "object_name", "object_year", "object_type", "object_description", "condition", "location", "bought_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["image_url", "https://robohash.org/voluptatemrepudiandaesuscipit.png?size=300x300&set=set1"], ["object_name", "Tarde Em Itapoa"], ["object_year", 1900], ["object_type", "Arts"], ["object_description", "###### Eum\nNam impedit voluptates. Quia nisi minima. Voluptate facere a.\n```ruby\nCorporis.\n```\nRerum quibusdam doloremque. Aut quod culpa. Delectus occaecati aliquid.\n* Quia. \n* Voluptatibus. \n* Animi. \n* Nostrum. \n* Recusandae. \n* Eum. \n\nAutem aperiam earum. Dolorem enim nam. Dignissimos voluptatem in.\n* Enim. \n* Recusandae. \n* Modi. \n"], ["condition", "good"], ["location", "Croninberg"], ["bought_at", "Hegmann, Harvey and Ryan"], ["created_at", "2022-07-11 01:04:52.299840"], ["updated_at", "2022-07-11 01:04:52.299840"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.3ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (1.1ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 59], ["user_id", 52], ["selling_or_donating", "Communications"], ["price_for_selling", 266.0], ["is_shipped", true], ["has_invoice", false], ["created_at", "2022-07-11 01:04:52.304847"], ["updated_at", "2022-07-11 01:04:52.304847"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.4ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 59], ["user_id", 50], ["selling_or_donating", "Information Systems"], ["price_for_selling", 279.0], ["is_shipped", false], ["has_invoice", true], ["created_at", "2022-07-11 01:04:52.309531"], ["updated_at", "2022-07-11 01:04:52.309531"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 60], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.4ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 60], ["user_id", 47], ["selling_or_donating", "Teaching"], ["price_for_selling", 362.0], ["is_shipped", false], ["has_invoice", false], ["created_at", "2022-07-11 01:04:52.313497"], ["updated_at", "2022-07-11 01:04:52.313497"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.2ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 53], ["user_id", 51], ["selling_or_donating", "Applied Science (Psychology)"], ["price_for_selling", 358.0], ["is_shipped", true], ["has_invoice", false], ["created_at", "2022-07-11 01:04:52.317478"], ["updated_at", "2022-07-11 01:04:52.317478"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.2ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 52], ["user_id", 50], ["selling_or_donating", "Medicine"], ["price_for_selling", 311.0], ["is_shipped", true], ["has_invoice", true], ["created_at", "2022-07-11 01:04:52.320969"], ["updated_at", "2022-07-11 01:04:52.320969"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 57], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.4ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 51], ["user_id", 57], ["selling_or_donating", "Psychology"], ["price_for_selling", 334.0], ["is_shipped", true], ["has_invoice", false], ["created_at", "2022-07-11 01:04:52.324426"], ["updated_at", "2022-07-11 01:04:52.324426"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 59], ["user_id", 52], ["selling_or_donating", "Engineering"], ["price_for_selling", 77.0], ["is_shipped", false], ["has_invoice", true], ["created_at", "2022-07-11 01:04:52.328196"], ["updated_at", "2022-07-11 01:04:52.328196"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 48], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 50], ["user_id", 48], ["selling_or_donating", "Law"], ["price_for_selling", 137.0], ["is_shipped", true], ["has_invoice", false], ["created_at", "2022-07-11 01:04:52.331588"], ["updated_at", "2022-07-11 01:04:52.331588"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 60], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 49], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 60], ["user_id", 49], ["selling_or_donating", "Psychology"], ["price_for_selling", 171.0], ["is_shipped", true], ["has_invoice", false], ["created_at", "2022-07-11 01:04:52.335158"], ["updated_at", "2022-07-11 01:04:52.335158"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 52], ["user_id", 46], ["selling_or_donating", "Computer Science"], ["price_for_selling", 66.0], ["is_shipped", false], ["has_invoice", false], ["created_at", "2022-07-11 01:04:52.338754"], ["updated_at", "2022-07-11 01:04:52.338754"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 60], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 60], ["user_id", 52], ["selling_or_donating", "Creative Arts"], ["price_for_selling", 420.0], ["is_shipped", false], ["has_invoice", true], ["created_at", "2022-07-11 01:04:52.342450"], ["updated_at", "2022-07-11 01:04:52.342450"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 49], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 49], ["user_id", 54], ["selling_or_donating", "Computer Science"], ["price_for_selling", 192.0], ["is_shipped", true], ["has_invoice", false], ["created_at", "2022-07-11 01:04:52.346108"], ["updated_at", "2022-07-11 01:04:52.346108"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 53], ["user_id", 50], ["selling_or_donating", "Education"], ["price_for_selling", 113.0], ["is_shipped", true], ["has_invoice", true], ["created_at", "2022-07-11 01:04:52.349690"], ["updated_at", "2022-07-11 01:04:52.349690"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 56], ["user_id", 56], ["selling_or_donating", "Medicine"], ["price_for_selling", 248.0], ["is_shipped", false], ["has_invoice", true], ["created_at", "2022-07-11 01:04:52.353300"], ["updated_at", "2022-07-11 01:04:52.353300"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItemDetail Load (0.2ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemDetail Load (0.1ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 49], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 60], ["LIMIT", 1]]
+  [1m[36mItemStatus Create (0.3ms)[0m  [1m[32mINSERT INTO "item_statuses" ("item_detail_id", "user_id", "selling_or_donating", "price_for_selling", "is_shipped", "has_invoice", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["item_detail_id", 49], ["user_id", 60], ["selling_or_donating", "Arts"], ["price_for_selling", 278.0], ["is_shipped", false], ["has_invoice", false], ["created_at", "2022-07-11 01:04:52.356798"], ["updated_at", "2022-07-11 01:04:52.356798"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddColumnsToUser (20220711141707)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.1ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "name" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220711141707"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mItemStatus Load (2.8ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" ORDER BY "item_statuses"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItemStatus Load (0.5ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" ORDER BY "item_statuses"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItemStatus Load (0.5ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" ORDER BY "item_statuses"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  [1m[36mItemStatus Load (0.4ms)[0m  [1m[34mSELECT "item_statuses".* FROM "item_statuses" ORDER BY "item_statuses"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItemDetail Load (1.3ms)[0m  [1m[34mSELECT "item_details".* FROM "item_details" WHERE "item_details"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
