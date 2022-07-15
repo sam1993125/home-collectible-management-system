@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_11_141707) do
+ActiveRecord::Schema.define(version: 2022_07_09_232624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "item_details", force: :cascade do |t|
+  create_table "item_statuses", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "user_id"
+    t.string "selling_or_donating"
+    t.datetime "report_date"
+    t.boolean "is_shipped"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "user_id"
     t.string "image_url"
     t.string "object_name"
     t.integer "object_year"
@@ -24,32 +35,18 @@ ActiveRecord::Schema.define(version: 2022_07_11_141707) do
     t.string "condition"
     t.string "location"
     t.string "bought_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "item_statuses", force: :cascade do |t|
-    t.bigint "item_detail_id", null: false
-    t.bigint "user_id", null: false
-    t.string "selling_or_donating"
-    t.float "price_for_selling"
-    t.boolean "is_shipped"
     t.boolean "has_invoice"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_detail_id"], name: "index_item_statuses_on_item_detail_id"
-    t.index ["user_id"], name: "index_item_statuses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "user_type"
+    t.string "password_digest"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
-    t.string "name"
   end
 
-  add_foreign_key "item_statuses", "item_details"
-  add_foreign_key "item_statuses", "users"
 end

@@ -1,5 +1,8 @@
 class ItemStatus < ApplicationRecord
-  belongs_to :item_detail
-  belongs_to :user
+  belongs_to :item
+
+   validates :report_date, presence: true
   
+
+
 end

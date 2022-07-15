@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
+    before_action :authorize
 	skip_before_action :authorize, only: [:create]
+
+    def items_index
+        user = User.find(params[:user_id])
+        items = user.items.order("created_at DESC")
+        render json: items
+    end
 
     def create 
         user = User.create!(user_params)
@@ -8,12 +15,12 @@ class UsersController < ApplicationController
     end
 
     def show 
-        render json: @current_user
+        render json: @current_user, status: :accepted
     end
 
     private 
 
     def user_params 
-        params.permit(:username, :name, :user_type, :password)
+        params.permit(:username, :email, :user_type, :password)
     end
 end
