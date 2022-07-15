@@ -7,23 +7,23 @@ Item.all.destroy_all
 
 
 puts "🤪 Making users..."                        
-user1 = User.create!(id: 1, username: "samgong", user_type: "Family", email: "sam19931225@gmail.com", password: "12345")
-user2 = User.create!(id: 2, username: "samgong1", user_type: "Individual", email: "sam19931227@gmail.com", password: "12345")
-user3 = User.create!(id: 3, username: "samgong2", user_type: "Family", email: "sam19931226@gmail.com", password: "12345")
-user4 = User.create!(id: 4, username: "samgong3", user_type: "Individual", email: "sam19931222@gmail.com", password: "12345")
+user1 = User.create!(id: Faker::IDNumber.valid, username: "samgong", user_type: "Family", email: "sam19931225@gmail.com", password: "12345")
+user2 = User.create!(id: Faker::IDNumber.valid, username: "samgong1", user_type: "Individual", email: "sam19931227@gmail.com", password: "12345")
+user3 = User.create!(id: Faker::IDNumber.valid, username: "samgong2", user_type: "Family", email: "sam19931226@gmail.com", password: "12345")
+user4 = User.create!(id: Faker::IDNumber.valid, username: "samgong3", user_type: "Individual", email: "sam19931222@gmail.com", password: "12345")
 
 
 puts "😊 Making item details..." 
-item1 = Item.create!(id: 1,object_name: "Radio", user_id: 1, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
-item2 = Item.create!(id: 2,object_name: "Bag", user_id: 1, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
-item3 = Item.create!(id: 3,object_name: "T-shirt", user_id: 1, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
-item4 = Item.create!(id: 4,object_name: "12344", user_id: 1, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
-item5 = Item.create!(id: 5,object_name: "123212", user_id: 2, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
-item6 = Item.create!(id: 6,object_name: "12321213", user_id: 2, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
-item7 = Item.create!(id: 7,object_name: "12331312", user_id: 2, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
-item8 = Item.create!(id: 8,object_name: "1233131", user_id: 2, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
-item9 = Item.create!(id: 9,object_name: "1232112", user_id: 3, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
-item10 = Item.create!(id: 10,object_name: "123211213", user_id: 3, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item1 = Item.create!(id: 1,object_name: "Radio", user_id: user1.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item2 = Item.create!(id: 2,object_name: "Bag", user_id: user1.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item3 = Item.create!(id: 3,object_name: "T-shirt", user_id: user1.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item4 = Item.create!(id: 4,object_name: "12344", user_id: user1.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item5 = Item.create!(id: 5,object_name: "123212", user_id: user2.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item6 = Item.create!(id: 6,object_name: "12321213", user_id: user2.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item7 = Item.create!(id: 7,object_name: "12331312", user_id: user2.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item8 = Item.create!(id: 8,object_name: "1233131", user_id: user2.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item9 = Item.create!(id: 9,object_name: "1232112", user_id: user3.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
+item10 = Item.create!(id: 10,object_name: "123211213", user_id: user3.id, image_url: Faker::Avatar.image, object_year: 1900,object_type: "love",object_description: Faker::Lorem.paragraphs(number: 1),condition: "good",location: Faker::Address.city,bought_at:Faker::Company.name, has_invoice: false)
 
                         
 

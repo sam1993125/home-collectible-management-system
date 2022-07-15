@@ -5,7 +5,7 @@ function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usertype, setUsertype] = useState("");
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,11 +18,11 @@ function SignUpForm({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username,
+      body: JSON.stringify({ 
+        username: username,
         password,
         user_type: usertype,
-        name: name,
+        email: email,
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -56,12 +56,12 @@ function SignUpForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <Label htmlFor="name">Name</Label>
+        <Label htmlFor="name">E-mail</Label>
         <Input
           type="text"
           id="imageUrl"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </FormField>
       <FormField>

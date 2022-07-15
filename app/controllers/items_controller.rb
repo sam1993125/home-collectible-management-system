@@ -17,8 +17,8 @@ class ItemsController < ApplicationController
 
     def update
         item = @current_user.items.find(params[:id])
-        new_item = item.update!(item_param_update)
-        render json: new_item, status: :accepted
+        item.update!(item_param_update)
+        render json: item, status: :accepted
     end
 
     def destroy

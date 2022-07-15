@@ -8,10 +8,20 @@ class UsersController < ApplicationController
         render json: items
     end
 
+    def index
+        user = User.last()
+        render json: user.id, status: :ok
+    end
+
     def create 
         user = User.create!(user_params)
-        session[:user_id] = user.id 
+        session[:id] = user.id 
         render json: user, status: :created 
+    end
+
+    def last_user
+        user = User.last()
+        render json: user.id, status: :ok
     end
 
     def show 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { Label, FormField, Input, Button, Error } from "../styles";
+import { Label, FormField, Input, Button, Error, } from "../styles";
 
 function ItemDetail() {
 
@@ -11,23 +11,33 @@ function ItemDetail() {
     const [donating, setDonating] = useState(false);
     const [reportdate, setReportdate] = useState();
     const [shipping, setShipping] = useState(false);
-    const [hasinvoice, setHasInvoice] = useState(false);
+    const [hasinvoice, setHasInvoice] = useState();
+
     const item_id = useParams()
     const [errors, setErrors] = useState([])
+
     const history = useHistory()
+    
     
    
     useEffect(() => {
         fetch(`/items/${item_id.item_id}`)  
             .then(response => response.json())
-            .then(data => setItem(data))
-
-        fetch(`/item_status/${item_id.item_id}`)
-            .then(response => response.json())
-            .then(data => {setItemStatus(data)
+            .then(data => {setItem(data)
+                console.log(data)
+                setHasInvoice(item.has_invoice)
             })
+        console.log("I am being called")
+
 
     },[])
+
+    useEffect(() => {
+        fetch(`/item_status/${item_id.item_id}`)
+            .then(response => response.json())
+            .then(data => {
+                setItemStatus(data)
+            })},[])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -54,21 +64,26 @@ function ItemDetail() {
             }
         });
     }
-    console.log(hasinvoice)
-    function handleInvoice(e) {
 
-        e.preventDefault();
+    function handleInvoice(e) {
+        
+        setHasInvoice(!hasinvoice)
+        console.log(hasinvoice, "this is from the app")
         fetch(`/items/${item_id.item_id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                has_invoice: !hasinvoice,
+                has_invoice: hasinvoice,
             }),
         })  
             .then((r) => r.json())
-            .then(()=>setHasInvoice())
+            .then(data => {
+                console.log(data, "From the api")
+                setItem(data)
+        })
+            
     }
 
     // console.log(item)
@@ -82,7 +97,7 @@ function ItemDetail() {
             <h4>Condition: {item.condition}</h4>
             <h4>Location: {item.location}</h4>
             <h4>Bought at: {item.bought_at}</h4>
-            {hasinvoice ? <Button type="primary" onclick={handleInvoice}>Invoice</Button> : <Button type="primary" onclick={handleInvoice}>NO INVOICE</Button>}
+            {item.has_invoice ? <Button type="primary" onClick={handleInvoice}>INVOICE</Button> : <Button type="primary" onClick={handleInvoice}>NO INVOICE</Button>}
             <Divider />
             {itemStatus.length > 0 ? (
                 itemStatus.map((itm) => (
@@ -90,11 +105,11 @@ function ItemDetail() {
                         <h1>New Donation Status!!!!!</h1>
                         <div>
                             <h4>Report Date: {itm.report_date}</h4>
-                            <h4>Donating?: 
-                                <Button type="secondary"> {itm.selling_or_donating.toString()}
+                            <h4>Donating?: &nbsp; &nbsp; &nbsp; 
+                                <Button variant="outline"> {itm.selling_or_donating.toString()}
                                 </Button></h4>
-                            <h4>Is it shipped?: 
-                                <Button type="secondary"> {itm.is_shipped.toString()}</Button>
+                            <h4>Is it shipped?: &nbsp; &nbsp; &nbsp; 
+                                <Button variant="outline"> {itm.is_shipped.toString()}</Button>
                                 </h4>
                         </div>
                     </Status>
@@ -168,5 +183,6 @@ const Divider = styled.hr`
   border-bottom: 1px solid #ccc;
   margin: 16px 0;
 `;
+
 
 export default ItemDetail

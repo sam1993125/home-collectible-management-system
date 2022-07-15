@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Users Controller
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
+  get "/users", to: "users#index"
 
    # Sessions Controller
   post "/login", to: "sessions#create"

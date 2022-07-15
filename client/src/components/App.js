@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import ItemList from "../pages/ItemList";
 import ItemDetails from "../pages/ItemDetails";
 import NewItem from "../pages/NewItem";
+import SignUpForm from "./SignUpForm";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,6 +26,9 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Switch>
+          <Route  path="/signup">
+            <SignUpForm user={user} />
+          </Route>
           <Route path="/new">
             <NewItem user={user} />
           </Route>
@@ -34,8 +38,11 @@ function App() {
           <Route path="/items/:item_id">
             <ItemDetails user={user}/>
           </Route>
+          <Route path="/login">
+            <Login user={user} />
+          </Route>
         </Switch>
-      </main>
+      </main>\
     </>
   );
 }
