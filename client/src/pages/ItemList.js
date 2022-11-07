@@ -28,6 +28,7 @@ function ItemList({ user }) {
 
 
   return (
+
     <Wrapper >
       {items.length > 0 ? (
         items.map((item) => (
@@ -45,6 +46,7 @@ function ItemList({ user }) {
         ))
       ) : (
         <>
+            &nbsp; &nbsp; &nbsp;
           <Button as={Link} to="/new">
             Make a New Donation!
           </Button>

@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     end
 
     def show 
-        item = Item.find(params[:id])
+        item = @current_user.items.find(params[:id])
         render json: item
     end
 
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     private
 
     def item_param
-        params.permit(:image_url, :object_name, :object_year, :object_type, :object_description, :condition, :location, :bought_at,:has_invoice, :user_id)
+        params.permit(:image_url, :object_name, :object_year, :object_type, :object_description, :condition, :location, :bought_at,:has_invoice)
     end
 
     def item_param_update

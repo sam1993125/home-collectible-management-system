@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import ItemList from "../pages/ItemList";
@@ -18,6 +18,7 @@ function App() {
       }
     });
   }, []); 
+
 
   if (!user) return <Login onLogin={setUser} />;
 
@@ -38,11 +39,11 @@ function App() {
           <Route path="/items/:item_id">
             <ItemDetails user={user}/>
           </Route>
-          <Route path="/login">
+          <Route path="/">
             <Login user={user} />
           </Route>
         </Switch>
-      </main>\
+      </main>
     </>
   );
 }

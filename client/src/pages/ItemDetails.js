@@ -7,10 +7,10 @@ function ItemDetail() {
 
     const [item, setItem] = useState([])
     const [itemStatus, setItemStatus] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [donating, setDonating] = useState(false);
+    const [isLoading, setIsLoading] = useState()
+    const [donating, setDonating] = useState();
     const [reportdate, setReportdate] = useState();
-    const [shipping, setShipping] = useState(false);
+    const [shipping, setShipping] = useState([]);
     const [hasinvoice, setHasInvoice] = useState();
 
     const item_id = useParams()
@@ -18,26 +18,30 @@ function ItemDetail() {
 
     const history = useHistory()
     
-    
-   
+
     useEffect(() => {
-        fetch(`/items/${item_id.item_id}`)  
+        fetch(`/items/${item_id.item_id}`)
             .then(response => response.json())
-            .then(data => {setItem(data)
-                console.log(data)
+            .then(data => {
+                setItem(data)
                 setHasInvoice(item.has_invoice)
             })
-        console.log("I am being called")
 
-
-    },[])
-
-    useEffect(() => {
         fetch(`/item_status/${item_id.item_id}`)
             .then(response => response.json())
             .then(data => {
                 setItemStatus(data)
-            })},[])
+                data.map((dt) => {
+                    setDonating(dt.selling_or_donating)
+                    setShipping(dt.is_shipped)
+                })
+            })  
+            console.log("I am being called")
+    }, [])
+
+    // console.log(itemStatus)
+    console.log(donating)
+    // console.log(shipping)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -48,24 +52,26 @@ function ItemDetail() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                selling_or_donating: donating,
                 report_date: reportdate,
-                is_shipped: shipping,
+                selling_or_donating: donating,
+                is_shipped:shipping,
             }),
         }).then((r) => {
             setIsLoading(false);
             if (r.ok) {
-                window.location.reload();
                 setIsLoading(false)
                 setDonating(false)
-                setReportdate()
+                setReportdate(false)
+                window.location.reload();
             } else {
                 r.json().then((err) => setErrors(err.errors));
             }
+          
         });
+        
     }
 
-    function handleInvoice(e) {
+    function handleInvoice() {
         
         setHasInvoice(!hasinvoice)
         console.log(hasinvoice, "this is from the app")
@@ -90,32 +96,30 @@ function ItemDetail() {
 
     return (
         <Wrapper>
-            <img src={item.image_url}/>
+            <img src={item.image_url} alt={item.object_name} style={mystyle} />
             <h1>Details:</h1>
             <h4>Year: {item.object_year}</h4>
             <h4>Object Type: {item.object_type}</h4>
             <h4>Condition: {item.condition}</h4>
             <h4>Location: {item.location}</h4>
             <h4>Bought at: {item.bought_at}</h4>
-            {item.has_invoice ? <Button type="primary" onClick={handleInvoice}>INVOICE</Button> : <Button type="primary" onClick={handleInvoice}>NO INVOICE</Button>}
+            {item.has_invoice ? <Button type="primary" onClick={handleInvoice}>HAS INVOICE</Button> : <Button type="primary" onClick={handleInvoice}>NO INVOICE</Button>}
             <Divider />
+            <h1>🎁🎁🎁New Donation Report!!!!!</h1>
             {itemStatus.length > 0 ? (
                 itemStatus.map((itm) => (
                     <Status key={itm.id}>
-                        <h1>New Donation Status!!!!!</h1>
                         <div>
                             <h4>Report Date: {itm.report_date}</h4>
-                            <h4>Donating?: &nbsp; &nbsp; &nbsp; 
-                                <Button variant="outline"> {itm.selling_or_donating.toString()}
-                                </Button></h4>
-                            <h4>Is it shipped?: &nbsp; &nbsp; &nbsp; 
-                                <Button variant="outline"> {itm.is_shipped.toString()}</Button>
-                                </h4>
+                            <h4>Donating?: &nbsp; &nbsp; &nbsp; {itemStatus.donating}</h4>
+                            <h4>Is it gone?: &nbsp; &nbsp; &nbsp;</h4>
+                            {/* {donating.true ? <Button variant="outline">Yes</Button> : <Button variant="outline">No</Button>}
+                            {shipping.true ? <Button variant="outline">Yes</Button> : <Button variant="outline">No</Button>}  */}
                         </div>
                     </Status>
                 ))
             ) : (
-                <h1>New Donation Status!!!!!</h1>
+                    <h1>🎁🎁🎁New Donation Report!!!!!</h1>
             )}
             <Divider />
                      <form onSubmit={handleSubmit}>
@@ -123,27 +127,27 @@ function ItemDetail() {
                             <Label htmlFor="bought_at">Donating?:</Label>
                             <input
                                  type="checkbox"
-                                id="objectYear"
+                                id="donating"
                                 value={donating}
                                 onChange={(e) => setDonating(e.target.value)}
                             />
                             </FormField>
 
                             <FormField>
-                            <Label htmlFor="bought_at">Is it shipped?:</Label>
+                            <Label htmlFor="bought_at">Is it gone?:</Label>
                             <input
                                 type="checkbox"
-                                id="objectYear"
-                                value={reportdate}
+                                id="shipping"
+                                value={shipping}
                                 onChange={(e) => setShipping(e.target.value)}
-                        checked />
+                             />
                             </FormField>
 
                             <FormField>
                             <Label htmlFor="bought_at">Report Date: </Label>
                             <Input
                                 type="datetime-local"
-                                id="objectYear"
+                                id="reportdate"
                                 value={reportdate}
                                 onChange={(e) => setReportdate(e.target.value)}
                             />
@@ -170,7 +174,7 @@ const Wrapper = styled.section`
   margin: 40px auto;
   padding: 16px;
   gap: 24px;
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    box-shadow: 0 1em 1em 0.5em rgb(0 102 204 / 10%),
     0 0 0 1px rgb(10 10 10 / 2%);
 `;
 
@@ -183,6 +187,13 @@ const Divider = styled.hr`
   border-bottom: 1px solid #ccc;
   margin: 16px 0;
 `;
+
+const mystyle = {
+    position: "relative",
+    width: "100%",
+    height: "100%",
+}
+
 
 
 export default ItemDetail

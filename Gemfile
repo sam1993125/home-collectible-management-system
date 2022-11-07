@@ -56,3 +56,5 @@ group :test do
 end
 
 gem "active_model_serializers", "~> 0.10.12"
+
+gem "awesome_print"

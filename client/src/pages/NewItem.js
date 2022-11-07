@@ -26,6 +26,7 @@ function NewItem({ user }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        user_id: user.id,
         object_name: objectName,
         object_year: objectYear,
         object_type: objectType,
@@ -159,12 +160,13 @@ function NewItem({ user }) {
 }
 
 const Wrapper = styled.section`
+
   max-width: 600px;
   margin: 40px auto;
   padding: 16px;
   display: flex;
   gap: 24px;
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    box-shadow: 0 1em 1em 0.5em rgb(0 102 204 / 10%),
     0 0 0 1px rgb(10 10 10 / 2%);
 `;
 

@@ -3,7 +3,7 @@ class CreateItemStatuses < ActiveRecord::Migration[6.1]
     create_table :item_statuses do |t|
       t.integer :item_id
       t.integer :user_id
-      t.string :selling_or_donating
+      t.boolean :selling_or_donating
       t.datetime :report_date
       t.boolean :is_shipped
 

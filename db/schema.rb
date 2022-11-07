@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_07_09_232624) do
   create_table "item_statuses", force: :cascade do |t|
     t.integer "item_id"
     t.integer "user_id"
-    t.string "selling_or_donating"
+    t.boolean "selling_or_donating"
     t.datetime "report_date"
     t.boolean "is_shipped"
     t.datetime "created_at", precision: 6, null: false

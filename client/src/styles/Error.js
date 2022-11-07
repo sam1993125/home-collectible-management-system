@@ -11,7 +11,7 @@ function Error({ children }) {
 
 const Wrapper = styled.div`
   color: #238;
-  background-color: #CFF6FF  ;
+  background-color: #EDFDFF  ;
   border-radius: 6px;
   display: flex;
   padding: 8px;
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 `;
 
 const Alert = styled.span`
-  background-color: white;
+  background-color: #FFFFFF;
   height: 30px;
   width: 30px;
   border-radius: 50%;

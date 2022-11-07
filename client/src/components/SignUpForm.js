@@ -34,6 +34,7 @@ function SignUpForm({ onLogin }) {
     });
   }
 
+
   return (
     <form onSubmit={handleSubmit}>
       <FormField>
